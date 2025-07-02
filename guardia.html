@@ -116,23 +116,28 @@
     }
 
     async function registrarAcceso(id, tipo) {
-      try {
-        const res = await fetch('https://tu-n8n.app/webhook/registro-villa', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ curp: id, tipo })
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const { mensaje } = await res.json();
-        document.getElementById('folio').value = '';
-        document.getElementById('resultadoVisita').innerHTML = '';
-        await cargarListas();
-        alert(mensaje);
-      } catch (err) {
-        console.error('Error registrarAcceso:', err);
-        alert('Error al registrar ' + tipo);
-      }
-    }
+  try {
+    const nombre = normalize(document.querySelector('#resultadoVisita .list-group-item:nth-child(1)').textContent.split(':')[1]);
+    const casa = normalize(document.querySelector('#resultadoVisita .list-group-item:nth-child(2)').textContent.split(':')[1]);
+
+    const res = await fetch('https://jjrmrcly.app.n8n.cloud/webhook/registro-villa', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ curp: id, tipo, nombre, casa })
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const { mensaje } = await res.json();
+    document.getElementById('folio').value = '';
+    document.getElementById('resultadoVisita').innerHTML = '';
+    await cargarListas();
+    alert(mensaje);
+  } catch (err) {
+    console.error('Error registrarAcceso:', err);
+    alert('Error al registrar ' + tipo);
+  }
+}
+
 
     async function mostrarVisita(id) {
       const cont = document.getElementById('resultadoVisita');
