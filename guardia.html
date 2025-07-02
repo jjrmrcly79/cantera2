@@ -142,7 +142,7 @@
 
     async function registrarAcceso(id, tipo) {
       try {
-        const res = await fetch('https://jjrmrcly.app.n8n.cloud/webhook/registro-villa', {
+        const res = await fetch('https://tu-n8n.app/webhook/registro-villa', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ curp: id, tipo })
@@ -163,7 +163,7 @@
       const cont = document.getElementById('resultadoVisita');
       cont.innerHTML = `<div class="alert alert-secondary">Cargando <strong>${id}</strong>…</div>`;
       try {
-        const res = await fetch(`https://tu-n8n.app/webhook/buscar-villa?curp=${encodeURIComponent(id)}`);
+        const res = await fetch(`https://jjrmrcly.app.n8n.cloud/webhook/buscar-villa?curp=${encodeURIComponent(id)}`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         const statusRaw = normalize(data.status);
