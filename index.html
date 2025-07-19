@@ -29,7 +29,8 @@
 
   <main class="container py-4">
     <?php if (!isset($_GET['page'])) { ?>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+        <!-- Módulo de Guardia -->
         <div class="col">
           <div class="card h-100 shadow-sm d-flex flex-column p-3">
             <div class="text-center">
@@ -40,6 +41,7 @@
             <a href="?page=guardia" class="btn btn-outline-primary mt-auto">📋 Abrir</a>
           </div>
         </div>
+        <!-- Estados de Cuenta -->
         <div class="col">
           <div class="card h-100 shadow-sm d-flex flex-column p-3">
             <div class="text-center">
@@ -50,6 +52,7 @@
             <a href="?page=estados" class="btn btn-outline-success mt-auto">📄 Ver</a>
           </div>
         </div>
+        <!-- Historial de Accesos -->
         <div class="col">
           <div class="card h-100 shadow-sm d-flex flex-column p-3">
             <div class="text-center">
@@ -58,6 +61,61 @@
             </div>
             <p class="text-center text-muted flex-grow-1">Revisa registros pasados de ingreso.</p>
             <a href="?page=historial" class="btn btn-outline-warning mt-auto">🕒 Ver</a>
+          </div>
+        </div>
+        <!-- Reglamento -->
+        <div class="col">
+          <div class="card h-100 shadow-sm d-flex flex-column p-3">
+            <div class="text-center">
+              <i class="bi bi-file-earmark-text card-icon"></i>
+              <div class="card-title">Reglamento</div>
+            </div>
+            <p class="text-center text-muted flex-grow-1">Consulta el reglamento de la villa.</p>
+            <a href="?page=reglamento" class="btn btn-outline-secondary mt-auto">📜 Ver</a>
+          </div>
+        </div>
+        <!-- Zonas Comunes -->
+        <div class="col">
+          <div class="card h-100 shadow-sm d-flex flex-column p-3">
+            <div class="text-center">
+              <i class="bi bi-geo-alt-fill card-icon"></i>
+              <div class="card-title">Zonas Comunes</div>
+            </div>
+            <p class="text-center text-muted flex-grow-1">Información de áreas compartidas.</p>
+            <a href="?page=zonas_comunes" class="btn btn-outline-secondary mt-auto">📍 Ver</a>
+          </div>
+        </div>
+        <!-- Espacios de Visita -->
+        <div class="col">
+          <div class="card h-100 shadow-sm d-flex flex-column p-3">
+            <div class="text-center">
+              <i class="bi bi-door-open-fill card-icon"></i>
+              <div class="card-title">Espacios de Visita</div>
+            </div>
+            <p class="text-center text-muted flex-grow-1">Reglas y horarios de visitas.</p>
+            <a href="?page=espacios_visita" class="btn btn-outline-secondary mt-auto">🚪 Ver</a>
+          </div>
+        </div>
+        <!-- Servicios Asignados -->
+        <div class="col">
+          <div class="card h-100 shadow-sm d-flex flex-column p-3">
+            <div class="text-center">
+              <i class="bi bi-tools card-icon"></i>
+              <div class="card-title">Servicios Asignados</div>
+            </div>
+            <p class="text-center text-muted flex-grow-1">Lista de servicios disponibles.</p>
+            <a href="?page=servicios_asignados" class="btn btn-outline-secondary mt-auto">🛠️ Ver</a>
+          </div>
+        </div>
+        <!-- Pagos y Personal -->
+        <div class="col">
+          <div class="card h-100 shadow-sm d-flex flex-column p-3">
+            <div class="text-center">
+              <i class="bi bi-upload card-icon"></i>
+              <div class="card-title">Pagos y Personal</div>
+            </div>
+            <p class="text-center text-muted flex-grow-1">Sube recibos y registra personal para tarjetas.</p>
+            <a href="?page=pagos_personal" class="btn btn-outline-secondary mt-auto">💾 Abrir</a>
           </div>
         </div>
       </div>
@@ -73,6 +131,16 @@
         include('historial.html');
       } elseif ($page === 'configuracion') {
         include('configuracion.html');
+      } elseif ($page === 'reglamento') {
+        include('reglamento.html');
+      } elseif ($page === 'zonas_comunes') {
+        include('zonas_comunes.html');
+      } elseif ($page === 'espacios_visita') {
+        include('espacios_visita.html');
+      } elseif ($page === 'servicios_asignados') {
+        include('servicios_asignados.html');
+      } elseif ($page === 'pagos_personal') {
+        include('pagos_personal.html');
       } elseif (!isset($_GET['page'])) { ?>
         <div class="alert alert-info text-center">Selecciona una sección para comenzar.</div>
     <?php } ?>
